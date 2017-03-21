@@ -23,6 +23,7 @@
             $scope.newTask = function () {
                 if ($scope.createdTask.name) {
                     $scope.tasks.push({name: $scope.createdTask.name, done: false});
+                    $scope.changeProgress()
                     console.log('added new task');
                 } else {
                     alert('Enter file name!');
@@ -39,6 +40,12 @@
                 $scope.progress = done / all * 100;
             }
 
+            $scope.changeProgress = function () {
+                if ($scope.progress != 0) {
+                    $scope.checkProgress();
+                }
+            }
+
             $scope.clearAllTasks = function () {
                 $scope.tasks = new Array();
                 $scope.progress = 0;
@@ -47,6 +54,7 @@
             $scope.deleteTask = function (task) {
                 var index = $scope.tasks.indexOf(task);
                 $scope.tasks.splice(index, 1);
+                $scope.changeProgress()
             }
 
         });
