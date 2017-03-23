@@ -3,10 +3,14 @@ var plugins = require('gulp-load-plugins')();
 var bowerFiles = require('main-bower-files');
 
 var paths = {
-    script: './public/javascript/**/*.js',
-    styles: './public/stylesheets/**/*.sass',
-    distDev: './dist.dev',
-    distProd: './dist.prod'
+    src: {
+        script: './public/javascripts/**/*.js',
+        styles: './public/stylesheets/**/*.sass',
+    },
+    build: {
+        script: './build/js/',
+        styles: './build/css/',
+    }
 }
 
 var pipes = {};
@@ -15,12 +19,12 @@ pipes.orderVendorScript = function () {
 };
 pipes.buildVendorScriptsDev = function () {
     return gulp.src(bowerFiles())
-        .pipe(gulp.dest(paths.distDev + '/bower_components'));
-};
-pipes.buildAppScriptsDev = function () {
-    return gulp.src(paths.scripts)
-        .pipe(plugins.concat('app.js'))
-        .pipe(gulp.dest(paths.distDev));
+        .pipe(gulp.dest(paths.build.script + '/bower_components'));
 };
 
-gulp.task('build-app-scripts-dev', pipes.builtAppScriptsDev);
+gulp.task('build:js', function () {
+    return gulp.src(paths.src.script)
+        .pipe(plugins.concat('app.js'))
+        .pipe(gulp.dest(paths.build.script));
+});
+
