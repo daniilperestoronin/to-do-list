@@ -2,24 +2,18 @@
 <html>
 <head>
     <title>ToDoList</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
-          integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-    <link rel="stylesheet" href="/stylesheets/style.css">
-    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"
-            integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"
-            crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
-            integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
-            crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
-            integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
-            crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-    <script src="/javascripts/app.js"></script>
+    <!-- bower:css -->
+    <!-- endinject -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- bower:js -->
+    <!-- endinject -->
+    <!-- inject:js -->
+    <!-- endinject -->
 </head>
 <body ng-app="ToDoListApp" ng-controller="ToDoListCtrl">
-<nav class="navbar navbar-inverse bg-primary navbar-toggleable-md navbar-light bg-faded">
 
+<nav class="navbar navbar-inverse bg-primary navbar-toggleable-md navbar-light bg-faded">
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
             data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
             aria-label="Toggle navigation">
@@ -29,7 +23,6 @@
 
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav mr-auto mt-2 mt-md-0">
-
         </ul>
         <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="text" placeholder="TaskName" ng-model="createdTask.name">
@@ -38,11 +31,9 @@
             </button>
         </form>
     </div>
-
 </nav>
 
 <div class="container">
-
     <div class="progress">
         <div class="progress-bar"
              ng-class="{'bg-danger': (progress>0 && progress<33), 'bg-warning': (33<= progress && progress<60), 'bg-success': progress>=60 && progress<=100}"
@@ -50,7 +41,6 @@
              ng-style="{width : ( progress + '%' ) }" aria-valuemin="0"
              aria-valuemax="100"></div>
     </div>
-
     <div class="card">
         <ul class="list-group list-group-flush">
             <li class="list-group-item" ng-repeat="task in tasks">
@@ -66,6 +56,5 @@
         </ul>
     </div>
 </div>
-
 </body>
 </html>

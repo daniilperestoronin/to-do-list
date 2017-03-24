@@ -1,26 +1,25 @@
-var gulp = require('gulp');
-var sass = require('gulp-sass');
-var plugins = require('gulp-load-plugins')();
-var bowerFiles = require('main-bower-files');
+var gulp = require('gulp'),
+    sass = require('gulp-sass'),
+    plugins = require('gulp-load-plugins')(),
+    bowerFiles = require('main-bower-files'),
+    gulpBowerFiles = require('gulp-main-bower-files'),
+    gulpDebug = require('gulp-debug'),
 
-var paths = {
-    src: {
-        script: './src/javascripts/**/*.js',
-        styles: './src/stylesheets/**/*.sass',
-    },
-    build: {
-        script: './build/javascripts/',
-        styles: './build/stylesheets/',
-    }
-}
+    paths = {
+        src: {
+            script: './src/javascripts/**/*.js',
+            styles: './src/stylesheets/**/*.sass',
+        },
+        build: {
+            build: './build/',
+            script: './build/javascripts/',
+            styles: './build/stylesheets/',
+        }
+    };
 
 var pipes = {};
 pipes.orderVendorScript = function () {
-    return plugins.order(['jquery.js', 'angular.js']);
-};
-pipes.buildVendorScriptsDev = function () {
-    return gulp.src(bowerFiles())
-        .pipe(gulp.dest(paths.build.script + '/bower_components'));
+    return;
 };
 
 gulp.task('build:js', function () {
@@ -33,6 +32,24 @@ gulp.task('build:sass', function () {
     gulp.src(paths.src.styles)
         .pipe(sass().on('error', sass.logError))
         .pipe(gulp.dest(paths.build.styles));
+});
+
+gulp.task('index:index', function () {
+
+    gulp.src('./bower.json')
+        .pipe(gulpBowerFiles())
+        .pipe(gulpDebug())
+        .pipe(gulp.dest('./build/bower_files'));
+
+    return gulp.src('./views/index.html')
+        .pipe(plugins.inject(gulp.src(bowerFiles())
+            .pipe(gulp
+                .dest(paths.build.build + '/bower_files'))
+            .pipe(plugins
+                .order(['jquery.js', 'angular.js'])), {relative: true, name: 'bower'}))
+        .pipe(plugins
+            .inject(gulp.src(['./build/javascripts/**/*.js', './build/stylesheets/**/*.css'], {read: false})))
+        .pipe(gulp.dest('./build'));
 });
 
 gulp.task('build', [

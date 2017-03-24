@@ -47,7 +47,7 @@
             }
 
             $scope.clearAllTasks = function () {
-                $scope.tasks = new Array();
+                $scope.tasks = [];
                 $scope.progress = 0;
             }
 
