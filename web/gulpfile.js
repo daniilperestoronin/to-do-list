@@ -4,12 +4,12 @@ var bowerFiles = require('main-bower-files');
 
 var paths = {
     src: {
-        script: './public/javascripts/**/*.js',
-        styles: './public/stylesheets/**/*.sass',
+        script: './src/javascripts/**/*.js',
+        styles: './src/stylesheets/**/*.sass',
     },
     build: {
-        script: './build/js/',
-        styles: './build/css/',
+        script: './build/javascripts/',
+        styles: './build/stylesheets/',
     }
 }
 
