@@ -2,8 +2,6 @@ var gulp = require('gulp'),
     sass = require('gulp-sass'),
     plugins = require('gulp-load-plugins')(),
     bowerFiles = require('main-bower-files'),
-    gulpBowerFiles = require('gulp-main-bower-files'),
-    gulpDebug = require('gulp-debug'),
 
     paths = {
         src: {
@@ -35,12 +33,6 @@ gulp.task('build:sass', function () {
 });
 
 gulp.task('index:index', function () {
-
-    gulp.src('./bower.json')
-        .pipe(gulpBowerFiles())
-        .pipe(gulpDebug())
-        .pipe(gulp.dest('./build/bower_files'));
-
     return gulp.src('./views/index.html')
         .pipe(plugins.inject(gulp.src(bowerFiles())
             .pipe(gulp
