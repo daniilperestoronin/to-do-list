@@ -1,4 +1,5 @@
 var gulp = require('gulp');
+var sass = require('gulp-sass');
 var plugins = require('gulp-load-plugins')();
 var bowerFiles = require('main-bower-files');
 
@@ -28,3 +29,13 @@ gulp.task('build:js', function () {
         .pipe(gulp.dest(paths.build.script));
 });
 
+gulp.task('build:sass', function () {
+    gulp.src(paths.src.styles)
+        .pipe(sass().on('error', sass.logError))
+        .pipe(gulp.dest(paths.build.styles));
+});
+
+gulp.task('build', [
+    'build:js',
+    'build:sass'
+]);

@@ -20,12 +20,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(require('node-sass-middleware')({
-    src: path.join(__dirname, './web/build/'),
-    dest: path.join(__dirname, './web/build/'),
-  indentedSyntax: true,
-  sourceMap: true
-}));
+
 app.use(express.static(path.join(__dirname, './web/build/')));
 
 app.use('/', index);
