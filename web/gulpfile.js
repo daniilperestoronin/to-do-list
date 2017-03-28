@@ -15,11 +15,6 @@ var gulp = require('gulp'),
         }
     };
 
-var pipes = {};
-pipes.orderVendorScript = function () {
-    return;
-};
-
 gulp.task('build:js', function () {
     return gulp.src(paths.src.script)
         .pipe(plugins.concat('app.js'))
@@ -38,13 +33,14 @@ gulp.task('index:index', function () {
             .pipe(gulp
                 .dest(paths.build.build + '/bower_files'))
             .pipe(plugins
-                .order(['jquery.js', 'angular.js'])), {relative: true, name: 'bower'}))
+                .order(['jquery.js', 'angular.js'])), {ignorePath: 'build', name: 'bower'}))
         .pipe(plugins
-            .inject(gulp.src(['./build/javascripts/**/*.js', './build/stylesheets/**/*.css'], {read: false})))
+            .inject(gulp.src(['./build/javascripts/**/*.js', './build/stylesheets/**/*.css']), {ignorePath: 'build'}))
         .pipe(gulp.dest('./build'));
 });
 
 gulp.task('build', [
     'build:js',
-    'build:sass'
+    'build:sass',
+    'index:index'
 ]);
