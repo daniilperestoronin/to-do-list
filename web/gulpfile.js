@@ -2,6 +2,7 @@ var gulp = require('gulp'),
     sass = require('gulp-sass'),
     plugins = require('gulp-load-plugins')(),
     bowerFiles = require('main-bower-files'),
+    runSequence = require('run-sequence'),
 
     paths = {
         src: {
@@ -39,8 +40,10 @@ gulp.task('index:index', function () {
         .pipe(gulp.dest('./build'));
 });
 
-gulp.task('build', [
-    'build:js',
-    'build:sass',
-    'index:index'
-]);
+gulp.task('build', function () {
+    runSequence(
+        'build:sass',
+        'build:js',
+        'index:index'
+    )
+});
