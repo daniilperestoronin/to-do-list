@@ -34,26 +34,37 @@
 </nav>
 
 <div class="container">
-    <div class="progress">
-        <div class="progress-bar"
-             ng-class="{'bg-danger': (progress>0 && progress<33), 'bg-warning': (33<= progress && progress<60), 'bg-success': progress>=60 && progress<=100}"
-             role="progressbar" aria-valuenow="{{progress}}"
-             ng-style="{width : ( progress + '%' ) }" aria-valuemin="0"
-             aria-valuemax="100"></div>
-    </div>
     <div class="card">
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item" ng-repeat="task in tasks">
-                <label class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
-                    <span class="custom-control-description" ng-class="{strike: task.done}">{{task.name}}</span>
-                    <input type="checkbox" class="custom-control-input" ng-model="task.done" ng-click="checkProgress()">
-                    <span class="custom-control-indicator"></span>
-                    <button type="button" class="close" aria-label="Close" ng-click="deleteTask(task)">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </label>
-            </li>
-        </ul>
+        <div class="card-header">
+            ToDoList
+        </div>
+        <div class="card-block">
+            <div class="row">
+                <div class="col-2">Progress:</div>
+                <div class="col-9">
+                    <div class="progress">
+                        <div class="progress-bar"
+                             ng-class="{'bg-danger': (progress>0 && progress<33), 'bg-warning': (33<= progress && progress<60), 'bg-success': progress>=60 && progress<=100}"
+                             role="progressbar" aria-valuenow="{{progress}}"
+                             ng-style="{width : ( progress + '%' ) }" aria-valuemin="0"
+                             aria-valuemax="100"></div>
+                    </div>
+                </div>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item" ng-repeat="task in tasks">
+                    <label class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
+                        <span class="custom-control-description" ng-class="{strike: task.done}">{{task.name}}</span>
+                        <input type="checkbox" class="custom-control-input" ng-model="task.done"
+                               ng-click="checkProgress()">
+                        <span class="custom-control-indicator"></span>
+                        <button type="button" class="close" aria-label="Close" ng-click="deleteTask(task)">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </label>
+                </li>
+            </ul>
+        </div>
     </div>
 </div>
 </body>
