@@ -11,21 +11,19 @@
     <!-- inject:js -->
     <!-- endinject -->
 </head>
-<body ng-app="ToDoListApp" ng-controller="ToDoListCtrl">
+<body ng-app="ToDoListApp">
 
 <nav class="navbar navbar-inverse bg-primary navbar-toggleable-md navbar-light bg-faded">
     <a class="navbar-brand" href="#">ToDoList</a>
 </nav>
 
-<div class="container">
+<div class="container" ng-controller="ToDoListCtrl">
     <div class="row">
         <div class="col-4">
             <ul class="list-group">
-                <li class="list-group-item">Cras justo odio</li>
-                <li class="list-group-item">Dapibus ac facilisis in</li>
-                <li class="list-group-item">Morbi leo risus</li>
-                <li class="list-group-item">Porta ac consectetur ac</li>
-                <li class="list-group-item">Vestibulum at eros</li>
+                <li class="list-group-item" ng-repeat="lists in tasksList" ng-click="changeActiveTaskList(lists)">
+                    {{lists.name}}
+                </li>
             </ul>
         </div>
         <div class="col-8">
