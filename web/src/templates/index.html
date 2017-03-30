@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ToDoList</title>
+    <!-- bower:css -->
+    <!-- endinject -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- bower:js -->
+    <!-- endinject -->
+    <!-- inject:js -->
+    <!-- endinject -->
+</head>
+<body ng-app="ToDoListApp" ng-controller="ToDoListCtrl">
+
+<nav class="navbar navbar-inverse bg-primary navbar-toggleable-md navbar-light bg-faded">
+    <a class="navbar-brand" href="#">ToDoList</a>
+</nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col-4">
+            <ul class="list-group">
+                <li class="list-group-item">Cras justo odio</li>
+                <li class="list-group-item">Dapibus ac facilisis in</li>
+                <li class="list-group-item">Morbi leo risus</li>
+                <li class="list-group-item">Porta ac consectetur ac</li>
+                <li class="list-group-item">Vestibulum at eros</li>
+            </ul>
+        </div>
+        <div class="col-8">
+            <div class="card">
+                <div class="card-header">
+                    ToDoList
+                    <div class="progress">
+                        <div class="progress-bar"
+                             ng-class="{'bg-danger': (progress>0 && progress<33), 'bg-warning': (33<= progress && progress<60), 'bg-success': progress>=60 && progress<=100}"
+                             role="progressbar" aria-valuenow="{{progress}}"
+                             ng-style="{width : ( progress + '%' ) }" aria-valuemin="0"
+                             aria-valuemax="100"></div>
+                    </div>
+
+                    <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="text" placeholder="TaskName"
+                               ng-model="createdTask.name">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" ng-click="newTask()">Add
+                        </button>
+                        <button class="btn btn-outline-danger  my-2 my-sm-0" type="button" ng-click="clearAllTasks()">
+                            Clear all
+                        </button>
+                    </form>
+
+                </div>
+                <div class="card-block">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item" ng-repeat="task in tasks">
+                            <label class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
+                                <span class="custom-control-description"
+                                      ng-class="{strike: task.done}">{{task.name}}</span>
+                                <input type="checkbox" class="custom-control-input" ng-model="task.done"
+                                       ng-click="checkProgress()">
+                                <span class="custom-control-indicator"></span>
+                                <button type="button" class="close" aria-label="Close" ng-click="deleteTask(task)">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
