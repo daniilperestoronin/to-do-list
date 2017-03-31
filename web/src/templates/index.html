@@ -20,11 +20,12 @@
 <div class="container" ng-controller="ToDoListCtrl">
     <div class="row">
         <div class="col-4">
-            <ul class="list-group">
-                <li class="list-group-item" ng-repeat="lists in tasksList" ng-click="changeActiveTaskList(lists)">
+            <div class="list-group">
+                <a class="list-group-item list-group-item-action" ng-repeat="lists in tasksList"
+                   ng-click="changeActiveTaskList(lists)">
                     {{lists.name}}
-                </li>
-            </ul>
+                </a>
+            </div>
         </div>
         <div class="col-8">
             <div class="card">
