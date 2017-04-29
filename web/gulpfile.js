@@ -9,15 +9,15 @@ var gulp = require('gulp'),
             src: './src/',
             templates: './src/templates/**/*.html',
             index: './src/templates/index.html',
-            script: './src/javascripts/**/*.js',
-            styles: './src/stylesheets/**/*.sass',
+            script: './src/scripts/**/*.js',
+            styles: './src/styles/**/*.sass',
         },
         build: {
             build: './build/',
             templates: './build/templates/',
             index: './build/templates/index.html',
-            script: './build/javascripts/',
-            styles: './build/stylesheets/',
+            script: './build/scripts/',
+            styles: './build/styles/',
         }
     };
 
@@ -46,7 +46,7 @@ gulp.task('index:index', function () {
             .pipe(plugins
                 .order(['jquery.js', 'angular.js'])), {ignorePath: 'build', name: 'bower'}))
         .pipe(plugins
-            .inject(gulp.src(['./build/javascripts/**/*.js', './build/stylesheets/**/*.css']), {ignorePath: 'build'}))
+            .inject(gulp.src(['./build/scripts/**/*.js', './build/styles/**/*.css']), {ignorePath: 'build'}))
         .pipe(gulp.dest(paths.build.templates));
 });
 
