@@ -5,9 +5,11 @@
 
             $scope.tasksList = [
                 {
-                    name: 'Lists 1',
+                    id:1,
+                    name: 'List 1',
                     active: true,
                     done: false,
+                    progress: 0,
                     tasks: [
                         {
                             name: 'Lists 1 Example task 1',
@@ -20,9 +22,11 @@
                     ]
                 },
                 {
-                    name: 'Lists 2',
+                    id:2,
+                    name: 'List 2',
                     active: false,
                     done: false,
+                    progress: 0,
                     tasks: [
                         {
                             name: 'Lists 2 Example task 1',
@@ -36,52 +40,46 @@
                 }
             ];
 
-            $scope.tasks = [];
+            $scope.activeTaskList;
 
             $scope.createdTask = {
                 name: null
             };
 
-            $scope.progress = 0;
-
             $scope.newTask = function () {
                 if ($scope.createdTask.name) {
-                    $scope.tasks.push({name: $scope.createdTask.name, done: false});
-                    $scope.progress = $scope.changeProgress($scope.tasks);
-                    console.log('added new task');
+                    $scope.activeTaskList.tasks.push({name: $scope.createdTask.name, done: false});
+                    $scope.activeTaskList.progress = $scope.changeProgress($scope.activeTaskList.tasks);
                 } else {
                     alert('Enter file name!');
                 }
             };
 
             $scope.clearAllTasks = function () {
-                $scope.tasks = [];
-                $scope.progress = 0;
+                $scope.activeTaskList.progress = [];
+                $scope.activeTaskList.progress = 0;
             };
 
             $scope.deleteTask = function (task) {
-                var index = $scope.tasks.indexOf(task);
-                $scope.tasks.splice(index, 1);
-                $scope.progress = $scope.changeProgress($scope.tasks);
+                var index = $scope.activeTaskList.tasks.indexOf(task);
+                $scope.activeTaskList.tasks.splice(index, 1);
+                $scope.activeTaskList.progress = $scope.changeProgress($scope.activeTaskList.tasks);
             };
 
             $scope.changeActiveTaskList = function (list) {
-                list.active = true;
-                $scope.tasks = list.tasks;
-                $scope.progress = $scope.changeProgress(list.tasks);
+                $scope.activeTaskList = list;
+                $scope.activeTaskList.progress = $scope.changeProgress(list.tasks);
             };
 
             $scope.checkProgress = function () {
-                $scope.progress = $scope.changeProgress($scope.tasks);
+                $scope.activeTaskList.progress = $scope.changeProgress($scope.activeTaskList.tasks);
             }
 
             $scope.changeProgress = function (tasks) {
                 var all = tasks.length;
-                console.log(all);
                 var done = tasks.filter(function (element) {
                     return element.done == true;
                 }).length
-                console.log(done);
                 return done / all * 100;
             };
         });

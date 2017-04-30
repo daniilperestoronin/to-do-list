@@ -13,29 +13,44 @@
 </head>
 <body ng-app="ToDoListApp">
 
-<nav class="navbar navbar-inverse bg-primary navbar-toggleable-md navbar-light bg-faded">
-    <a class="navbar-brand" href="#">ToDoList</a>
+
+<nav class="navbar sticky-top navbar-light bg-faded">
+  <a class="navbar-brand">ToDoList</a>
 </nav>
+
 
 <div class="container" ng-controller="ToDoListCtrl">
     <div class="row">
         <div class="col-4">
+            <div class="card">
+                <div class="card-header">
+                    Lists
+                </div>
             <div class="list-group">
-                <a class="list-group-item list-group-item-action" ng-repeat="lists in tasksList"
-                   ng-click="changeActiveTaskList(lists)">
-                    {{lists.name}}
+                <a class="list-group-item list-group-item-action" ng-repeat="list in tasksList"
+                   ng-click="changeActiveTaskList(list)">
+                    {{list.name}}
+                    <span class="badge badge-pill"
+                          ng-class="{'badge-default':list.progress==0,
+                          'badge-danger': (list.progress>0 && list.progress<33),
+                          'badge-warning': (33<= list.progress && list.progress<60),
+                          'badge-success': list.progress>=60 && list.progress<=100}"
+                    >{{lists.progress}}</span>
                 </a>
+            </div>
             </div>
         </div>
         <div class="col-8">
             <div class="card">
                 <div class="card-header">
-                    ToDoList
+                    {{activeTaskList.name}}
                     <div class="progress">
                         <div class="progress-bar"
-                             ng-class="{'bg-danger': (progress>0 && progress<33), 'bg-warning': (33<= progress && progress<60), 'bg-success': progress>=60 && progress<=100}"
-                             role="progressbar" aria-valuenow="{{progress}}"
-                             ng-style="{width : ( progress + '%' ) }" aria-valuemin="0"
+                             ng-class="{'bg-danger': (activeTaskList.progress>0 && activeTaskList.progress<33),
+                              'bg-warning': (33<= activeTaskList.progress && activeTaskList.progress<60),
+                               'bg-success': activeTaskList.progress>=60 && activeTaskList.progress<=100}"
+                             role="progressbar" aria-valuenow="{{activeTaskList.progress}}"
+                             ng-style="{width : ( activeTaskList.progress + '%' ) }" aria-valuemin="0"
                              aria-valuemax="100"></div>
                     </div>
 
@@ -52,7 +67,7 @@
                 </div>
                 <div class="card-block">
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item" ng-repeat="task in tasks">
+                        <li class="list-group-item" ng-repeat="task in activeTaskList.tasks">
                             <label class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
                                 <span class="custom-control-description"
                                       ng-class="{strike: task.done}">{{task.name}}</span>
