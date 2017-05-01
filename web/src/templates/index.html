@@ -24,10 +24,10 @@
         <div class="col-4">
             <div class="card">
                 <div class="card-header">
-                    Lists
+                    <h4 class="card-title">Lists</h4>
                 </div>
             <div class="list-group">
-                <a class="list-group-item list-group-item-action" ng-repeat="list in tasksList"
+                <a class="list-group-item justify-content-between list-group-item-action" ng-repeat="list in tasksList"
                    ng-click="changeActiveTaskList(list)">
                     {{list.name}}
                     <span class="badge badge-pill"
@@ -35,7 +35,7 @@
                           'badge-danger': (list.progress>0 && list.progress<33),
                           'badge-warning': (33<= list.progress && list.progress<60),
                           'badge-success': list.progress>=60 && list.progress<=100}"
-                    >{{list.progress | number:0}}</span>
+                    >{{list.progress | number:0 }}</span>
                 </a>
             </div>
             </div>
@@ -43,7 +43,7 @@
         <div class="col-8">
             <div class="card" ng-show="activeTaskList">
                 <div class="card-header">
-                    {{activeTaskList.name}}
+                    <h4 class="card-title">{{activeTaskList.name}}</h4>
                     <div class="progress">
                         <div class="progress-bar"
                              ng-class="{'bg-danger': (activeTaskList.progress>0 && activeTaskList.progress<33),
@@ -67,17 +67,17 @@
                 </div>
                 <div class="card-block">
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item" ng-repeat="task in activeTaskList.tasks">
+                        <li class="list-group-item justify-content-between" ng-repeat="task in activeTaskList.tasks">
                             <label class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
                                 <span class="custom-control-description"
                                       ng-class="{strike: task.done}">{{task.name}}</span>
                                 <input type="checkbox" class="custom-control-input" ng-model="task.done"
                                        ng-click="checkProgress()">
                                 <span class="custom-control-indicator"></span>
-                                <button type="button" class="close" aria-label="Close" ng-click="deleteTask(task)">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
                             </label>
+                            <button type="button" class="close" aria-label="Close" ng-click="deleteTask(task)">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
                         </li>
                     </ul>
                 </div>
