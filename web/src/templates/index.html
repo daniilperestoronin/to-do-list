@@ -35,7 +35,7 @@
                           'badge-danger': (list.progress>0 && list.progress<33),
                           'badge-warning': (33<= list.progress && list.progress<60),
                           'badge-success': list.progress>=60 && list.progress<=100}"
-                    >{{list.progress}}</span>
+                    >{{list.progress | number:0}}</span>
                 </a>
             </div>
             </div>
