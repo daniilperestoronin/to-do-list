@@ -41,7 +41,7 @@
             </div>
         </div>
         <div class="col-8">
-            <div class="card">
+            <div class="card" ng-show="activeTaskList">
                 <div class="card-header">
                     {{activeTaskList.name}}
                     <div class="progress">
@@ -82,6 +82,13 @@
                     </ul>
                 </div>
             </div>
+
+            <div class="card" ng-show="!activeTaskList">
+                <div class="card-block">
+                    Choice ToDoList
+                </div>
+            </div>
+
         </div>
     </div>
 </div>
