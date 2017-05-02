@@ -46,12 +46,24 @@
                 name: null
             };
 
+            $scope.createdList = {
+                name: null
+            }
+
             $scope.newTask = function () {
                 if ($scope.createdTask.name) {
                     $scope.activeTaskList.tasks.push({name: $scope.createdTask.name, done: false});
                     $scope.activeTaskList.progress = $scope.changeProgress($scope.activeTaskList.tasks);
                 } else {
-                    alert('Enter file name!');
+                    alert('Enter task name!');
+                }
+            };
+
+            $scope.newList = function () {
+                if ($scope.createdList.name) {
+                    $scope.tasksList.push({name: $scope.createdList.name, progress: 0, done: false, tasks: []});
+                } else {
+                    alert('Enter list name!');
                 }
             };
 
