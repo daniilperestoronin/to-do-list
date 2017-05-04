@@ -72,6 +72,11 @@
                 $scope.activeTaskList.progress = 0;
             };
 
+            $scope.clearAllLists = function () {
+                $scope.tasksList = [];
+                $scope.activeTaskList = {};
+            };
+
             $scope.deleteTask = function (task) {
                 var index = $scope.activeTaskList.tasks.indexOf(task);
                 $scope.activeTaskList.tasks.splice(index, 1);
