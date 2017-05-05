@@ -38,6 +38,7 @@
                         </ul>
                     </div>
                 </div>
+
             <div class="list-group">
                 <a class="list-group-item justify-content-between list-group-item-action" ng-repeat="list in tasksList"
                    ng-click="changeActiveTaskList(list)">
@@ -55,7 +56,20 @@
         <div class="col-8">
             <div class="card" ng-show="activeTaskList">
                 <div class="card-header">
-                    <h4 class="card-title">{{activeTaskList.name}}</h4>
+                    <div class="row">
+                        <h4 class="card-title">{{activeTaskList.name}}</h4>
+                        <ul class="nav nav-pills">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                                   aria-haspopup="true" aria-expanded="false">Options</a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" data-toggle="modal" data-target="#new-task-modal">New
+                                        task</a>
+                                    <a class="dropdown-item" ng-click="clearAllTasks()">Clear all tasks</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
                     <div class="progress">
                         <div class="progress-bar"
                              ng-class="{'bg-danger': (activeTaskList.progress>0 && activeTaskList.progress<33),
@@ -65,17 +79,6 @@
                              ng-style="{width : ( activeTaskList.progress + '%' ) }" aria-valuemin="0"
                              aria-valuemax="100"></div>
                     </div>
-
-                    <form class="form-inline my-2 my-lg-0">
-                        <input class="form-control mr-sm-2" type="text" placeholder="TaskName"
-                               ng-model="createdTask.name">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" ng-click="newTask()">Add
-                        </button>
-                        <button class="btn btn-outline-danger  my-2 my-sm-0" type="button" ng-click="clearAllTasks()">
-                            Clear all
-                        </button>
-                    </form>
-
                 </div>
                 <div class="card-block">
                     <ul class="list-group list-group-flush">
@@ -105,12 +108,12 @@
     </div>
 
 
-    <!-- Nel List Modal -->
+    <!-- Nel Task Modal -->
     <div class="modal fade" id="flipFlop" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">New list</h5>
+                    <h5 class="modal-title">New list</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -124,6 +127,32 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="newList()">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Nel List Modal -->
+    <div class="modal fade" id="new-task-modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">New task</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="text" placeholder="TaskName"
+                               ng-model="createdTask.name">
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="newTask()">Add</button>
                 </div>
             </div>
         </div>

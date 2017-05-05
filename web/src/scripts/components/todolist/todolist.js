@@ -54,6 +54,7 @@
                 if ($scope.createdTask.name) {
                     $scope.activeTaskList.tasks.push({name: $scope.createdTask.name, done: false});
                     $scope.activeTaskList.progress = $scope.changeProgress($scope.activeTaskList.tasks);
+                    $scope.createdTask.name = '';
                 } else {
                     alert('Enter task name!');
                 }
@@ -62,13 +63,14 @@
             $scope.newList = function () {
                 if ($scope.createdList.name) {
                     $scope.tasksList.push({name: $scope.createdList.name, progress: 0, done: false, tasks: []});
+                    $scope.createdList.name = '';
                 } else {
                     alert('Enter list name!');
                 }
             };
 
             $scope.clearAllTasks = function () {
-                $scope.activeTaskList.progress = [];
+                $scope.activeTaskList.tasks = [];
                 $scope.activeTaskList.progress = 0;
             };
 
