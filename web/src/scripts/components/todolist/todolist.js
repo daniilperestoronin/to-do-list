@@ -93,6 +93,8 @@
             }
 
             $scope.changeProgress = function (tasks) {
+                if (!tasks.length)
+                    return 0;
                 var all = tasks.length;
                 var done = tasks.filter(function (element) {
                     return element.done == true;
