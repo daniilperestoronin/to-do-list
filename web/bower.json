@@ -15,7 +15,8 @@
     "angular": "^1.6.3",
     "bootstrap": "^4.0.0-alpha.6",
     "jquery": "^3.2.1",
-    "angular-ui-router": "^0.4.2"
+    "angular-ui-router": "^0.4.2",
+    "components-font-awesome": "^4.7.0"
   },
   "overrides": {
     "bootstrap": {
@@ -23,7 +24,12 @@
         "dist/css/bootstrap.css",
         "dist/js/bootstrap.js"
       ]
+    },
+    "components-font-awesome": {
+      "main": [
+        "css/font-awesome.css",
+        "fonts/*"
+      ]
     }
   }
 }
-
