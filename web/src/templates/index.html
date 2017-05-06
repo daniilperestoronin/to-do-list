@@ -19,27 +19,30 @@
 </nav>
 
 
-<div class="container" ng-controller="ToDoListCtrl">
+<div class="container top-margin-10" ng-controller="ToDoListCtrl">
     <div class="row">
         <div class="col-4">
             <div class="card">
                 <div class="card-header">
-                    <div class="row">
-                        <h4 class="card-title">Lists</h4>
-                        <ul class="nav">
-                            <li class="nav-item dropdown">
-                                <a class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" href="#"
-                                   role="button"
-                                   aria-haspopup="true" aria-expanded="false">
-                                    <i class="fa fa-align-justify" title="Align Justify"></i>
-                                </a>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" data-toggle="modal" data-target="#flipFlop">New list</a>
-                                    <a class="dropdown-item" ng-click="clearAllLists()">Clear all lists</a>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
+                    <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+                        <a class="navbar-brand">Lists</a>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav">
+                                <li class="nav-item dropdown">
+                                    <a class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" href="#"
+                                       role="button"
+                                       aria-haspopup="true" aria-expanded="false">
+                                        <i class="fa fa-align-justify" title="Align Justify"></i>
+                                    </a>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" data-toggle="modal" data-target="#flipFlop">Add
+                                            list</a>
+                                        <a class="dropdown-item" ng-click="clearAllLists()">Clear all lists</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
                 </div>
 
             <div class="list-group">
@@ -59,23 +62,27 @@
         <div class="col-8">
             <div class="card" ng-show="activeTaskList">
                 <div class="card-header">
-                    <div class="row">
-                        <h4 class="card-title">{{activeTaskList.name}}</h4>
-                        <ul class="nav nav-pills">
-                            <li class="nav-item dropdown">
-                                <a class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" href="#"
-                                   role="button"
-                                   aria-haspopup="true" aria-expanded="false">
-                                    <i class="fa fa-cog" aria-hidden="true"></i>
-                                </a>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" data-toggle="modal" data-target="#new-task-modal">New
-                                        task</a>
-                                    <a class="dropdown-item" ng-click="clearAllTasks()">Clear all tasks</a>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
+
+                    <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+                        <a class="navbar-brand">{{activeTaskList.name}}</a>
+                        <div class="collapse navbar-collapse">
+                            <ul class="nav nav-pills">
+                                <li class="nav-item dropdown">
+                                    <a class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" href="#"
+                                       role="button"
+                                       aria-haspopup="true" aria-expanded="false">
+                                        <i class="fa fa-cog" aria-hidden="true"></i>
+                                    </a>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" data-toggle="modal" data-target="#new-task-modal">Add
+                                            task</a>
+                                        <a class="dropdown-item" ng-click="clearAllTasks()">Clear all tasks</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+
                     <div class="progress">
                         <div class="progress-bar"
                              ng-class="{'bg-danger': (activeTaskList.progress>0 && activeTaskList.progress<33),
