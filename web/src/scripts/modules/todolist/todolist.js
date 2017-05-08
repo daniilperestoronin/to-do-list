@@ -1,7 +1,9 @@
 (function () {
+    'use strict';
+
     angular.module('ToDoList', [])
 
-        .controller('ToDoListCtrl', function ($scope) {
+        .controller('ToDoListController', function ($scope) {
 
             $scope.tasksList = [
                 {

@@ -12,11 +12,13 @@
     "tests"
   ],
   "dependencies": {
-    "angular": "^1.6.3",
+    "angular": "^1.6.4",
     "bootstrap": "^4.0.0-alpha.6",
     "jquery": "^3.2.1",
     "angular-ui-router": "^0.4.2",
-    "components-font-awesome": "^4.7.0"
+    "components-font-awesome": "^4.7.0",
+    "angular-route": "^1.6.4",
+    "angular-cookies": "^1.6.4"
   },
   "overrides": {
     "bootstrap": {
