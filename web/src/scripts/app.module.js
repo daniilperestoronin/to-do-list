@@ -4,6 +4,7 @@
     angular.module('ToDoListApp',
         ['ToDoList',
             'Authentication',
+            'Greeting',
             'ngRoute',
             'ngCookies'])
         .config(['$routeProvider', function ($routeProvider) {
@@ -11,13 +12,18 @@
             $routeProvider
                 .when('/login', {
                     controller: 'AuthenticationController',
-                    templateUrl: 'templates/modules/authentication/authentication.html',
+                    templateUrl: 'templates/modules/authentication/authentication.tmpl.html',
                     hideMenus: true
                 })
 
-                .when('/', {
+                .when('/tasks', {
                     controller: 'ToDoListController',
-                    templateUrl: 'templates/modules/todolist/todolist.html'
+                    templateUrl: 'templates/modules/todolist/todolist.tmpl.html'
+                })
+
+                .when('/', {
+                    controller: 'GreetingController',
+                    templateUrl: 'templates/modules/greeting/greeting.tmpl.html'
                 })
 
                 .otherwise({redirectTo: '/login'});
