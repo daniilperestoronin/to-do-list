@@ -3,6 +3,7 @@ var gulp = require('gulp'),
     plugins = require('gulp-load-plugins')(),
     bowerFiles = require('main-bower-files'),
     runSequence = require('run-sequence'),
+    angularOrder = require('gulp-angular-order'),
 
     paths = {
         src: {
@@ -23,6 +24,9 @@ var gulp = require('gulp'),
 
 gulp.task('build:js', function () {
     return gulp.src(paths.src.script)
+        .pipe(angularOrder({
+            types: ['module', 'service', 'controller', 'directive', 'filter', 'routes', 'config']
+        }))
         .pipe(plugins.concat('app.js'))
         .pipe(gulp.dest(paths.build.script));
 });
