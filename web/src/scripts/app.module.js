@@ -5,6 +5,7 @@
         ['ToDoList',
             'Authentication',
             'Greeting',
+            'Calendar',
             'ngRoute',
             'ngCookies'])
         .config(['$routeProvider', function ($routeProvider) {
@@ -19,6 +20,11 @@
                 .when('/tasks', {
                     controller: 'ToDoListController',
                     templateUrl: 'templates/modules/todolist/todolist.tmpl.html'
+                })
+
+                .when('/calendar', {
+                    controller: 'CalendarController',
+                    templateUrl: 'templates/modules/calendar/calendar.tmpl.html'
                 })
 
                 .when('/', {
