@@ -1,26 +1,31 @@
-<div ng-controller="CalendarController">
-    <div class="btn-toolbar">
-        <div class="btn-group">
-            <button class="btn btn-success" ng-click="changeView('agendaDay', myCalendar)">Day</button>
-            <button class="btn btn-success" ng-click="changeView('agendaWeek', myCalendar)">Week</button>
-            <button class="btn btn-success" ng-click="changeView('month', myCalendar)">Month</button>
+<nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
+    <a class="navbar-brand" href="#">ToDoList</a>
+
+    <div class="collapse navbar-collapse">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link" href="#!/tasks">
+                <i class="fa fa-tasks" aria-hidden="true"></i>
+                Tasks
+            </a>
+            <a class="nav-item nav-link" href="#!/calendar">
+                <i class="fa fa-calendar" aria-hidden="true"></i>
+                Calendar
+            </a>
         </div>
     </div>
-    <div class="calendar" ng-model="eventSources" calendar="myCalendar" config="uiConfig.calendar"
-         ui-calendar="uiConfig.calendar"></div>
 
-
-    <div class="alert-success calAlert" ng-show="alertMessage != undefined && alertMessage != ''">
-        <h4>{{alertMessage}}</h4>
+    <div class="collapse navbar-collapse justify-content-end">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link" href="#!/">
+                <i class="fa fa-user-o" aria-hidden="true"></i>
+                Logout
+            </a>
+        </div>
     </div>
+</nav>
 
-    <ul class="unstyled">
-        <li ng-repeat="e in events | filter:currentDate">
-            <div class="alert alert-info">
-                <a class="close" ng-click="remove($index)"><i class="icon-remove"></i></a>
-                <b> {{e.title}}</b> - {{e.start | date:"MMM dd"}}
-            </div>
-        </li>
-    </ul>
-
+<div ng-controller="CalendarController">
+    <div class="container mt-10" ng-controller="ToDoListController">
+        <div ui-calendar="uiConfig.calendar" class="span8 calendar" ng-model="eventSources"></div>
+    </div>
 </div>

@@ -48,7 +48,10 @@ gulp.task('index:index', function () {
             .pipe(gulp
                 .dest(paths.build.build + '/bower_files'))
             .pipe(plugins
-                .order(['jquery.js', 'angular.js'])), {ignorePath: 'build', name: 'bower'}))
+                .order(['jquery.js', 'angular.js', 'moment.js', 'fullcalendar.js'])), {
+            ignorePath: 'build',
+            name: 'bower'
+        }))
         .pipe(plugins
             .inject(gulp.src(['./build/scripts/**/*.js', './build/styles/**/*.css']), {ignorePath: 'build'}))
         .pipe(gulp.dest(paths.build.templates));
