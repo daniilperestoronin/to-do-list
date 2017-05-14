@@ -12,6 +12,8 @@
                     active: true,
                     done: false,
                     progress: 0,
+                    startDate: new Date(),
+                    endDate: new Date(),
                     tasks: [
                         {
                             name: 'Lists 1 Example task 1',
@@ -29,6 +31,8 @@
                     active: false,
                     done: false,
                     progress: 0,
+                    startDate: new Date(),
+                    endDate: new Date(),
                     tasks: [
                         {
                             name: 'Lists 2 Example task 1',
@@ -49,7 +53,9 @@
             };
 
             $scope.createdList = {
-                name: null
+                name: null,
+                startDate: new Date(),
+                endDate: new Date(),
             }
 
             $scope.newTask = function () {
@@ -64,7 +70,10 @@
 
             $scope.newList = function () {
                 if ($scope.createdList.name) {
-                    $scope.tasksList.push({name: $scope.createdList.name, progress: 0, done: false, tasks: []});
+                    $scope.tasksList.push({
+                        name: $scope.createdList.name, startDate: $scope.createdList.startDate,
+                        endDate: $scope.createdList.endDate, progress: 0, done: false, tasks: []
+                    });
                     $scope.createdList.name = '';
                 } else {
                     alert('Enter list name!');

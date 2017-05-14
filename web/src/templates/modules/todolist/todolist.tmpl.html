@@ -62,6 +62,8 @@
                        ng-repeat="list in tasksList"
                        ng-click="changeActiveTaskList(list)">
                         {{list.name}}
+                        <i class="fa fa-calendar" aria-hidden="true"></i>
+                        {{list.startDate | date:'shortDate'}} - {{list.endDate | date:'shortDate'}}
                         <span class="badge badge-pill"
                               ng-class="{'badge-default':list.progress==0,
                           'badge-danger': (list.progress>0 && list.progress<33),
@@ -78,6 +80,8 @@
 
                     <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
                         <a class="navbar-brand">{{activeTaskList.name}}</a>
+                        <i class="fa fa-calendar" aria-hidden="true"></i>
+                        {{activeTaskList.startDate | date:'short'}} - {{activeTaskList.endDate | date:'short'}}
                         <div class="collapse navbar-collapse justify-content-end">
                             <ul class="nav nav-pills">
                                 <li class="nav-item dropdown">
@@ -151,6 +155,8 @@
                     <form class="form-inline my-2 my-lg-0">
                         <input class="form-control mr-sm-2" type="text" placeholder="TaskName"
                                ng-model="createdList.name">
+                        <input class="form-control mr-sm-2" type="datetime-local" ng-model="createdList.startDate">
+                        <input class="form-control mr-sm-2" type="datetime-local" ng-model="createdList.endDate">
                     </form>
                 </div>
                 <div class="modal-footer">
