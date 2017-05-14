@@ -123,6 +123,7 @@
                                        ng-click="checkProgress()">
                                 <span class="custom-control-indicator"></span>
                             </label>
+                            {{task.startDate | date:'short'}}-{{task.endDate | date:'short'}}
                             <button type="button" class="close" aria-label="Close" ng-click="deleteTask(task)">
                                 <span aria-hidden="true"><i class="fa fa-times" aria-hidden="true"></i></span>
                             </button>
@@ -154,18 +155,18 @@
                 <div class="modal-body">
                     <form>
                         <div class="form-group">
-                            <label for="task-name">Task name: </label>
-                            <input class="form-control" type="text" id="task-name"
+                            <label for="list-name">Task name: </label>
+                            <input class="form-control" type="text" id="list-name"
                                    ng-model="createdList.name">
                         </div>
                         <div class="form-group">
-                            <label for="task-start-date">Start date: </label>
-                            <input class="form-control" type="datetime-local" id="task-start-date"
+                            <label for="list-start-date">Start date: </label>
+                            <input class="form-control" type="datetime-local" id="list-start-date"
                                    ng-model="createdList.startDate">
                         </div>
                         <div class="form-group">
-                            <label for="task-end-date">End date: </label>
-                            <input class="form-control" type="datetime-local" id="task-end-date"
+                            <label for="list-end-date">End date: </label>
+                            <input class="form-control" type="datetime-local" id="list-end-date"
                                    ng-model="createdList.endDate">
                         </div>
                     </form>
@@ -191,9 +192,22 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form class="form-inline my-2 my-lg-0">
-                        <input class="form-control mr-sm-2" type="text" placeholder="TaskName"
-                               ng-model="createdTask.name">
+                    <form>
+                        <div class="form-group">
+                            <label for="task-name">Task name: </label>
+                            <input class="form-control" type="text" id="task-name"
+                                   ng-model="createdTask.name">
+                        </div>
+                        <div class="form-group">
+                            <label for="task-start-date">Start date: </label>
+                            <input class="form-control" type="datetime-local" id="task-start-date"
+                                   ng-model="createdTask.startDate">
+                        </div>
+                        <div class="form-group">
+                            <label for="task-end-date">End date: </label>
+                            <input class="form-control" type="datetime-local" id="task-end-date"
+                                   ng-model="createdTask.endDate">
+                        </div>
                     </form>
                 </div>
                 <div class="modal-footer">

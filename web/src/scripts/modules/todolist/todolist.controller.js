@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('ToDoList', [])
+    angular.module('ToDoList')
 
         .controller('ToDoListController', function ($scope) {
 
@@ -17,11 +17,15 @@
                     tasks: [
                         {
                             name: 'Lists 1 Example task 1',
-                            done: false
+                            done: false,
+                            startDate: new Date(),
+                            endDate: new Date()
                         },
                         {
                             name: 'Lists 1 Example task 2',
-                            done: false
+                            done: false,
+                            startDate: new Date(),
+                            endDate: new Date()
                         }
                     ]
                 },
@@ -36,11 +40,15 @@
                     tasks: [
                         {
                             name: 'Lists 2 Example task 1',
-                            done: false
+                            done: false,
+                            startDate: new Date(),
+                            endDate: new Date()
                         },
                         {
                             name: 'Lists 2 Example task 2',
-                            done: false
+                            done: false,
+                            startDate: new Date(),
+                            endDate: new Date()
                         }
                     ]
                 }
@@ -49,7 +57,9 @@
             $scope.activeTaskList;
 
             $scope.createdTask = {
-                name: null
+                name: null,
+                startDate: new Date(),
+                endDate: new Date()
             };
 
             $scope.createdList = {
@@ -60,7 +70,10 @@
 
             $scope.newTask = function () {
                 if ($scope.createdTask.name) {
-                    $scope.activeTaskList.tasks.push({name: $scope.createdTask.name, done: false});
+                    $scope.activeTaskList.tasks.push({
+                        name: $scope.createdTask.name, done: false,
+                        startDate: $scope.createdList.startDate, endDate: $scope.createdList.endDate
+                    });
                     $scope.activeTaskList.progress = $scope.changeProgress($scope.activeTaskList.tasks);
                     $scope.createdTask.name = '';
                 } else {
