@@ -80,9 +80,16 @@
 
                     <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
                         <a class="navbar-brand">{{activeTaskList.name}}</a>
-                        <i class="fa fa-calendar" aria-hidden="true"></i>
-                        {{activeTaskList.startDate | date:'short'}} - {{activeTaskList.endDate | date:'short'}}
+
                         <div class="collapse navbar-collapse justify-content-end">
+
+                         <span class="navbar-text">
+                            <div class="row">
+                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                            {{activeTaskList.startDate | date:'short'}} - {{activeTaskList.endDate | date:'short'}}
+                          </div>
+                        </span>
+
                             <ul class="nav nav-pills">
                                 <li class="nav-item dropdown">
                                     <a class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown"
