@@ -70,6 +70,9 @@
                           'badge-warning': (33<= list.progress && list.progress<60),
                           'badge-success': list.progress>=60 && list.progress<=100}"
                         >{{list.progress | number:0 }}</span>
+                        <button type="button" class="close" aria-label="Close" ng-click="deleteList(list)">
+                            <span aria-hidden="true"><i class="fa fa-times" aria-hidden="true"></i></span>
+                        </button>
                     </a>
                 </div>
             </div>

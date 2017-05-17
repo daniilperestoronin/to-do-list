@@ -58,14 +58,17 @@
                 $scope.activeTaskList = {};
             };
 
+            $scope.deleteList = function (list) {
+                ToDoListService.deleteTaskList(list.id);
+            }
+
             $scope.deleteTask = function (task) {
-                ToDoListService.deleteTask($scope.activeTaskList.id, task)
+                ToDoListService.deleteTask($scope.activeTaskList.id, task);
                 $scope.activeTaskList.progress = $scope.changeProgress($scope.activeTaskList.tasks);
             };
 
             $scope.changeActiveTaskList = function (list) {
-                $scope.activeTaskList = list;
-                $scope.activeTaskList.progress = $scope.changeProgress(list.tasks);
+                $scope.activeTaskList = ToDoListService.getTaskList(list.id);
             };
 
             $scope.checkProgress = function () {

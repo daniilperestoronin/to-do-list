@@ -16,12 +16,14 @@
                     endDate: new Date(),
                     tasks: [
                         {
+                            id: 1,
                             name: 'Lists 1 Example task 1',
                             done: false,
                             startDate: new Date(),
                             endDate: new Date()
                         },
                         {
+                            id: 2,
                             name: 'Lists 1 Example task 2',
                             done: false,
                             startDate: new Date(),
@@ -39,12 +41,14 @@
                     endDate: new Date(),
                     tasks: [
                         {
+                            id: 1,
                             name: 'Lists 2 Example task 1',
                             done: false,
                             startDate: new Date(),
                             endDate: new Date()
                         },
                         {
+                            id: 2,
                             name: 'Lists 2 Example task 2',
                             done: false,
                             startDate: new Date(),
@@ -88,7 +92,8 @@
 
             function deleteTaskList(listId) {
                 for (var i = 0; i < tasksList.length; i++) {
-                    if (tasksList[i].id == listId) delete tasksList[i];
+                    if (tasksList[i].id == listId) tasksList.splice(i, 1);
+                    ;
                 }
             };
 
@@ -118,7 +123,7 @@
             function deleteTask(listId, taskId) {
                 for (var i = 0; i < getTaskList(listId).tasks.length; i++) {
                     if (getTaskList(listId).tasks[i].id == taskId)
-                        delete getTaskList(listId).tasks[i];
+                        getTaskList(listId).tasks.splice(i, 1);
                 }
             };
 
