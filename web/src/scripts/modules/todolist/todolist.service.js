@@ -5,6 +5,55 @@
 
         .factory('ToDoListService', function () {
 
+            var tasksList = [
+                {
+                    id: 1,
+                    name: 'List 1',
+                    active: true,
+                    done: false,
+                    progress: 0,
+                    startDate: new Date(),
+                    endDate: new Date(),
+                    tasks: [
+                        {
+                            name: 'Lists 1 Example task 1',
+                            done: false,
+                            startDate: new Date(),
+                            endDate: new Date()
+                        },
+                        {
+                            name: 'Lists 1 Example task 2',
+                            done: false,
+                            startDate: new Date(),
+                            endDate: new Date()
+                        }
+                    ]
+                },
+                {
+                    id: 2,
+                    name: 'List 2',
+                    active: false,
+                    done: false,
+                    progress: 0,
+                    startDate: new Date(),
+                    endDate: new Date(),
+                    tasks: [
+                        {
+                            name: 'Lists 2 Example task 1',
+                            done: false,
+                            startDate: new Date(),
+                            endDate: new Date()
+                        },
+                        {
+                            name: 'Lists 2 Example task 2',
+                            done: false,
+                            startDate: new Date(),
+                            endDate: new Date()
+                        }
+                    ]
+                }
+            ];
+
             var service = {};
 
             service.createTaskList = createTaskList;
@@ -76,55 +125,5 @@
             function getAllTask(listId) {
                 return getTaskList(listId).tasks;
             };
-
-
-            var tasksList = [
-                {
-                    id: 1,
-                    name: 'List 1',
-                    active: true,
-                    done: false,
-                    progress: 0,
-                    startDate: new Date(),
-                    endDate: new Date(),
-                    tasks: [
-                        {
-                            name: 'Lists 1 Example task 1',
-                            done: false,
-                            startDate: new Date(),
-                            endDate: new Date()
-                        },
-                        {
-                            name: 'Lists 1 Example task 2',
-                            done: false,
-                            startDate: new Date(),
-                            endDate: new Date()
-                        }
-                    ]
-                },
-                {
-                    id: 2,
-                    name: 'List 2',
-                    active: false,
-                    done: false,
-                    progress: 0,
-                    startDate: new Date(),
-                    endDate: new Date(),
-                    tasks: [
-                        {
-                            name: 'Lists 2 Example task 1',
-                            done: false,
-                            startDate: new Date(),
-                            endDate: new Date()
-                        },
-                        {
-                            name: 'Lists 2 Example task 2',
-                            done: false,
-                            startDate: new Date(),
-                            endDate: new Date()
-                        }
-                    ]
-                }
-            ];
         });
 })();

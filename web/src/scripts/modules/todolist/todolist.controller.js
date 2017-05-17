@@ -3,56 +3,9 @@
 
     angular.module('ToDoList')
 
-        .controller('ToDoListController', function ($scope) {
+        .controller('ToDoListController', ['$scope', 'ToDoListService', function ($scope, ToDoListService) {
 
-            $scope.tasksList = [
-                {
-                    id:1,
-                    name: 'List 1',
-                    active: true,
-                    done: false,
-                    progress: 0,
-                    startDate: new Date(),
-                    endDate: new Date(),
-                    tasks: [
-                        {
-                            name: 'Lists 1 Example task 1',
-                            done: false,
-                            startDate: new Date(),
-                            endDate: new Date()
-                        },
-                        {
-                            name: 'Lists 1 Example task 2',
-                            done: false,
-                            startDate: new Date(),
-                            endDate: new Date()
-                        }
-                    ]
-                },
-                {
-                    id:2,
-                    name: 'List 2',
-                    active: false,
-                    done: false,
-                    progress: 0,
-                    startDate: new Date(),
-                    endDate: new Date(),
-                    tasks: [
-                        {
-                            name: 'Lists 2 Example task 1',
-                            done: false,
-                            startDate: new Date(),
-                            endDate: new Date()
-                        },
-                        {
-                            name: 'Lists 2 Example task 2',
-                            done: false,
-                            startDate: new Date(),
-                            endDate: new Date()
-                        }
-                    ]
-                }
-            ];
+            $scope.tasksList = ToDoListService.getAllTaskLists();
 
             $scope.activeTaskList;
 
@@ -70,10 +23,12 @@
 
             $scope.newTask = function () {
                 if ($scope.createdTask.name) {
-                    $scope.activeTaskList.tasks.push({
-                        name: $scope.createdTask.name, done: false,
-                        startDate: $scope.createdList.startDate, endDate: $scope.createdList.endDate
-                    });
+                    ToDoListService.createTask($scope.activeTaskList.id,
+                        {
+                            name: $scope.createdTask.name, done: false,
+                            startDate: $scope.createdList.startDate, endDate: $scope.createdList.endDate
+                        }
+                    )
                     $scope.activeTaskList.progress = $scope.changeProgress($scope.activeTaskList.tasks);
                     $scope.createdTask.name = '';
                 } else {
@@ -83,10 +38,10 @@
 
             $scope.newList = function () {
                 if ($scope.createdList.name) {
-                    $scope.tasksList.push({
+                    ToDoListService.createTaskList({
                         name: $scope.createdList.name, startDate: $scope.createdList.startDate,
                         endDate: $scope.createdList.endDate, progress: 0, done: false, tasks: []
-                    });
+                    })
                     $scope.createdList.name = '';
                 } else {
                     alert('Enter list name!');
@@ -104,8 +59,7 @@
             };
 
             $scope.deleteTask = function (task) {
-                var index = $scope.activeTaskList.tasks.indexOf(task);
-                $scope.activeTaskList.tasks.splice(index, 1);
+                ToDoListService.deleteTask($scope.activeTaskList.id, task)
                 $scope.activeTaskList.progress = $scope.changeProgress($scope.activeTaskList.tasks);
             };
 
@@ -127,5 +81,5 @@
                 }).length
                 return done / all * 100;
             };
-        });
+        }]);
 })();
