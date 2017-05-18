@@ -65,12 +65,14 @@
             service.updateTaskList = updateTaskList;
             service.deleteTaskList = deleteTaskList;
             service.getAllTaskLists = getAllTaskLists;
+            service.deleteAllTaskLists = deleteAllTaskLists;
 
             service.createTask = createTask;
             service.getTask = getTask;
             service.updateTask = updateTask;
             service.deleteTask = deleteTask;
             service.getAllTask = getAllTask;
+            service.deleteAllTasks = deleteAllTasks;
 
             return service;
 
@@ -101,6 +103,9 @@
                 return tasksList;
             };
 
+            function deleteAllTaskLists() {
+                tasksList = [];
+            }
 
             function createTask(listId, task) {
                 getTaskList(listId).tasks.push(task);
@@ -125,6 +130,10 @@
                     if (getTaskList(listId).tasks[i].id == taskId)
                         getTaskList(listId).tasks.splice(i, 1);
                 }
+            };
+
+            function deleteAllTasks(listId) {
+                getTaskList(listId).tasks = [];
             };
 
             function getAllTask(listId) {

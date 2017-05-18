@@ -57,7 +57,6 @@ gulp.task('index:index', function () {
         .pipe(gulp.dest(paths.build.templates));
 });
 
-
 gulp.task('build', function () {
     runSequence(
         'build:sass',

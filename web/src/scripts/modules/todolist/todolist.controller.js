@@ -49,13 +49,13 @@
             };
 
             $scope.clearAllTasks = function () {
+                ToDoListService.deleteAllTasks($scope.activeTaskList.id);
                 $scope.activeTaskList.tasks = [];
-                $scope.activeTaskList.progress = 0;
             };
 
             $scope.clearAllLists = function () {
+                ToDoListService.deleteAllTaskLists();
                 $scope.tasksList = [];
-                $scope.activeTaskList = {};
             };
 
             $scope.deleteList = function (list) {
