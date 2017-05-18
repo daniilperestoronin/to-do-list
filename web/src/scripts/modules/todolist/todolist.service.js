@@ -126,9 +126,10 @@
             };
 
             function deleteTask(listId, taskId) {
-                for (var i = 0; i < getTaskList(listId).tasks.length; i++) {
-                    if (getTaskList(listId).tasks[i].id == taskId)
-                        getTaskList(listId).tasks.splice(i, 1);
+                var tasksList = getTaskList(listId).tasks;
+                for (var i = 0; i < tasksList.length; i++) {
+                    if (tasksList[i].id == taskId)
+                        tasksList.splice(i, 1);
                 }
             };
 

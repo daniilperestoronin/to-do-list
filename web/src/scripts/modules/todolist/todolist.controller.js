@@ -63,7 +63,7 @@
             }
 
             $scope.deleteTask = function (task) {
-                ToDoListService.deleteTask($scope.activeTaskList.id, task);
+                ToDoListService.deleteTask($scope.activeTaskList.id, task.id);
                 $scope.activeTaskList.progress = $scope.changeProgress($scope.activeTaskList.tasks);
             };
 
