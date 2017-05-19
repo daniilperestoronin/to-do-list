@@ -58,6 +58,9 @@
                 </div>
 
                 <div class="list-group">
+                    <div class="alert alert-info" role="alert" ng-show="tasksList.length==0">
+                        No created task lists.
+                    </div>
                     <a class="list-group-item justify-content-between list-group-item-action"
                        ng-repeat="list in tasksList"
                        ng-click="changeActiveTaskList(list)">
@@ -125,6 +128,9 @@
                 </div>
                 <div class="card-block">
                     <ul class="list-group list-group-flush">
+                        <div class="alert alert-info" role="alert" ng-show="activeTaskList.tasks.length==0">
+                            No created tasks in this list.
+                        </div>
                         <li class="list-group-item justify-content-between" ng-repeat="task in activeTaskList.tasks">
                             <label class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
                                 <span class="custom-control-description"
