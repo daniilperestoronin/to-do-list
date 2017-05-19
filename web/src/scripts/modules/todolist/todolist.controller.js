@@ -42,6 +42,7 @@
                         name: $scope.createdList.name, startDate: $scope.createdList.startDate,
                         endDate: $scope.createdList.endDate, progress: 0, done: false, tasks: []
                     })
+                    $scope.tasksList = ToDoListService.getAllTaskLists();
                     $scope.createdList.name = '';
                 } else {
                     alert('Enter list name!');
@@ -55,11 +56,13 @@
 
             $scope.clearAllLists = function () {
                 ToDoListService.deleteAllTaskLists();
+                $scope.activeTaskList = null;
                 $scope.tasksList = [];
             };
 
             $scope.deleteList = function (list) {
                 ToDoListService.deleteTaskList(list.id);
+                $scope.activeTaskList = null;
             }
 
             $scope.deleteTask = function (task) {
