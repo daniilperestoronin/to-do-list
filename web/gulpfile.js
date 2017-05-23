@@ -48,7 +48,7 @@ gulp.task('index:index', function () {
             .pipe(gulp
                 .dest(paths.build.build + '/bower_files'))
             .pipe(plugins
-                .order(['jquery.js', 'angular.js', 'moment.js', 'fullcalendar.js'])), {
+                .order(['jquery.js', 'angular.js', 'moment.js', 'fullcalendar.js', 'tether.js', 'bootstrap.js'])), {
             ignorePath: 'build',
             name: 'bower'
         }))

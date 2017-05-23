@@ -15,8 +15,7 @@
                             left: 'title',
                             center: '',
                             right: 'today prev,next'
-                        },
-                        defaultDate: new Date()
+                        }
                     }
                 };
 
