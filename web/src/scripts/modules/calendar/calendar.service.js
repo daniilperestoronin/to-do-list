@@ -17,11 +17,13 @@
                 var tasksEvents = [];
                 for (var i = 0; i < tasksList.length; i++) {
                     for (var j = 0; j < tasksList[i].tasks.length; j++) {
-                        tasksEvents.push({
-                            title: tasksList[i].tasks[j].name,
-                            start: tasksList[i].tasks[j].startDate,
-                            end: tasksList[i].tasks[j].endDate
-                        })
+                        if (!tasksList[i].tasks[j].done) {
+                            tasksEvents.push({
+                                title: tasksList[i].tasks[j].name,
+                                start: tasksList[i].tasks[j].startDate,
+                                end: tasksList[i].tasks[j].endDate
+                            })
+                        }
                     }
                 }
                 return tasksEvents;

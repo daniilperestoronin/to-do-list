@@ -19,6 +19,7 @@
                         defaultDate: new Date()
                     }
                 };
+
                 $scope.eventSources = [$scope.events]
             }]);
 })();
