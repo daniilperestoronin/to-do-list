@@ -4,6 +4,10 @@
     angular.module('ToDoList')
 
         .factory('ToDoListService', function () {
+            var date = new Date();
+            var d = date.getDate();
+            var m = date.getMonth();
+            var y = date.getFullYear();
 
             var tasksList = [
                 {
@@ -19,15 +23,15 @@
                             id: 1,
                             name: 'Lists 1 Example task 1',
                             done: false,
-                            startDate: new Date(),
-                            endDate: new Date()
+                            startDate: new Date(y, m, d - 5),
+                            endDate: new Date(y, m, d + 3)
                         },
                         {
                             id: 2,
                             name: 'Lists 1 Example task 2',
                             done: false,
-                            startDate: new Date(),
-                            endDate: new Date()
+                            startDate: new Date(y, m, d - 1),
+                            endDate: new Date(y, m, d + 2)
                         }
                     ]
                 },
@@ -44,15 +48,15 @@
                             id: 1,
                             name: 'Lists 2 Example task 1',
                             done: false,
-                            startDate: new Date(),
-                            endDate: new Date()
+                            startDate: new Date(y, m, d),
+                            endDate: new Date(y, m, d + 5)
                         },
                         {
                             id: 2,
                             name: 'Lists 2 Example task 2',
                             done: false,
-                            startDate: new Date(),
-                            endDate: new Date()
+                            startDate: new Date(y, m, d - 2),
+                            endDate: new Date(y, m, d - 1)
                         }
                     ]
                 }
