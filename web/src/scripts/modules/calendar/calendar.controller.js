@@ -10,15 +10,26 @@
                 $scope.uiConfig = {
                     calendar: {
                         height: 800,
-                        editable: true,
                         header: {
-                            left: 'title',
-                            center: '',
-                            right: 'today prev,next'
-                        }
+                            left: 'prev,next today',
+                            center: 'title',
+                            right: 'listDay,listWeek,month, week, day'
+                        },
+
+                        // customize the button names,
+                        // otherwise they'd all just say "list"
+                        views: {
+                            listDay: {buttonText: 'list day'},
+                            listWeek: {buttonText: 'list week'}
+                        },
+                        defaultView: 'listWeek',
+                        defaultDate: new Date(),
+                        navLinks: true, // can click day/week names to navigate views
+                        editable: true,
+                        eventLimit: true, // allow "more" link when too many events
+                        events: $scope.events
+
                     }
                 };
-
-                $scope.eventSources = [$scope.events]
             }]);
 })();
