@@ -5,8 +5,6 @@
         .controller('CalendarController', ['$scope', 'CalendarService',
             function ($scope, CalendarService) {
 
-                $scope.events = CalendarService.getAllEvents();
-
                 $scope.uiConfig = {
                     calendar: {
                         height: 800,
@@ -27,9 +25,9 @@
                         navLinks: true, // can click day/week names to navigate views
                         editable: true,
                         eventLimit: true, // allow "more" link when too many events
-                        events: $scope.events
-
                     }
                 };
+
+                $scope.eventSources = CalendarService.getAllEvents()
             }]);
 })();
