@@ -17,6 +17,7 @@
 
             $scope.createdList = {
                 name: null,
+                color: null,
                 startDate: new Date(),
                 endDate: new Date(),
             }
@@ -39,8 +40,13 @@
             $scope.newList = function () {
                 if ($scope.createdList.name) {
                     ToDoListService.createTaskList({
-                        name: $scope.createdList.name, startDate: $scope.createdList.startDate,
-                        endDate: $scope.createdList.endDate, progress: 0, done: false, tasks: []
+                        name: $scope.createdList.name,
+                        color: $scope.createdList.color,
+                        startDate: $scope.createdList.startDate,
+                        endDate: $scope.createdList.endDate,
+                        progress: 0,
+                        done: false,
+                        tasks: []
                     })
                     $scope.tasksList = ToDoListService.getAllTaskLists();
                     $scope.createdList.name = '';
