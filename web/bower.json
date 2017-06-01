@@ -20,7 +20,8 @@
     "angular-route": "^1.6.4",
     "angular-cookies": "^1.6.4",
     "angular-ui-calendar": "^1.0.2",
-    "fullcalendar": "^3.4.0"
+    "fullcalendar": "^3.4.0",
+    "ngjs-color-picker": "^1.1.0"
   },
   "overrides": {
     "bootstrap": {

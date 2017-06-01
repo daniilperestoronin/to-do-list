@@ -1,5 +1,5 @@
 (function () {
     'use strict';
 
-    angular.module('ToDoList', [])
+    angular.module('ToDoList', ['ngjsColorPicker'])
 })();

@@ -157,7 +157,7 @@
         </div>
     </div>
 
-    <!-- Nel Task Modal -->
+    <!-- Nel Tasks List Modal -->
     <div class="modal fade" id="flipFlop" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -170,9 +170,13 @@
                 <div class="modal-body">
                     <form>
                         <div class="form-group">
-                            <label for="list-name">Task name: </label>
+                            <label for="list-name">Tasks list name: </label>
                             <input class="form-control" type="text" id="list-name"
                                    ng-model="createdList.name">
+                        </div>
+                        <div class="form-group">
+                            <label for="task-name">Color: </label>
+                            <ngjs-color-picker></ngjs-color-picker>
                         </div>
                         <div class="form-group">
                             <label for="list-start-date">Start date: </label>
@@ -195,7 +199,7 @@
     </div>
 
 
-    <!-- Nel List Modal -->
+    <!-- Nel Task Modal -->
     <div class="modal fade" id="new-task-modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
          aria-hidden="true">
         <div class="modal-dialog" role="document">
