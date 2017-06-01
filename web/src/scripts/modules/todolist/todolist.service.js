@@ -13,11 +13,12 @@
                 {
                     id: 1,
                     name: 'List 1',
+                    color: '#a8b2e7',
                     active: true,
                     done: false,
                     progress: 0,
-                    startDate: new Date(),
-                    endDate: new Date(),
+                    startDate: new Date(y, m, d - 5),
+                    endDate: new Date(y, m, d + 3),
                     tasks: [
                         {
                             id: 1,
@@ -38,11 +39,12 @@
                 {
                     id: 2,
                     name: 'List 2',
+                    color: '#008d00',
                     active: false,
                     done: false,
                     progress: 0,
-                    startDate: new Date(),
-                    endDate: new Date(),
+                    startDate: new Date(y, m, d - 2),
+                    endDate: new Date(y, m, d + 5),
                     tasks: [
                         {
                             id: 1,

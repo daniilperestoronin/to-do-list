@@ -17,7 +17,7 @@
                 var tasksEvents = [];
                 for (var i = 0; i < tasksList.length; i++) {
                     var tasksListEvent = {
-                        color: getRandomColor(),
+                        color: tasksList[i].color,
                         events: []
                     }
                     for (var j = 0; j < tasksList[i].tasks.length; j++) {
@@ -33,15 +33,5 @@
                 }
                 return tasksEvents;
             };
-
-            function getRandomColor() {
-                var letters = '0123456789ABCDEF';
-                var color = '#';
-                for (var i = 0; i < 6; i++) {
-                    color += letters[Math.floor(Math.random() * 16)];
-                }
-                return color;
-            }
-
         }]);
 })();
