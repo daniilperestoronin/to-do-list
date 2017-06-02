@@ -64,7 +64,7 @@
                        ng-repeat="list in tasksList"
                        ng-click="changeActiveTaskList(list)">
                         {{list.name}}
-                        <i class="fa fa-calendar" aria-hidden="true"></i>
+                        <i class="fa fa-calendar" aria-hidden="true" ng-style="{'background-color':list.color}"></i>
                         {{list.startDate | date:'shortDate'}} - {{list.endDate | date:'shortDate'}}
                         <span class="badge badge-pill"
                               ng-class="{'badge-default':list.progress==0,
@@ -90,7 +90,8 @@
 
                          <span class="navbar-text">
                             <div class="row">
-                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                            <i class="fa fa-calendar" aria-hidden="true"
+                               ng-style="{'background-color':activeTaskList.color}"></i>
                             {{activeTaskList.startDate | date:'short'}} - {{activeTaskList.endDate | date:'short'}}
                           </div>
                         </span>
